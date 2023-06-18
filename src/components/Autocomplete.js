@@ -1,4 +1,5 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
+
 const fruits = ["apple", "banana", "cherry", "date", "elderberry", "fig"];
 
 const Autocomplete = () => {
@@ -17,33 +18,33 @@ const Autocomplete = () => {
     setInputValue(event.target.value);
   };
 
+  const handleSuggestionClick = (suggestion) => {
+    setInputValue(suggestion);
+  };
+
   return (
-     <div className="container">
-      
-      
+    <div className="container">
       <div className="autocomplete">
-      <div className="title">
-        <h1>Search item</h1>
-        
-
+        <div className="title">
+          <h1>Search item</h1>
+        </div>
+        <br />
+        <input
+          type="text"
+          value={inputValue}
+          onChange={handleChange}
+          placeholder="Search for a fruit"
+        />
+        <br />
+        <ul>
+          {suggestions.map((suggestion) => (
+            <li key={suggestion} onClick={() => handleSuggestionClick(suggestion)}>
+              {suggestion}
+            </li>
+          ))}
+        </ul>
       </div>
-      <br />
-      <input
-        type="text"
-        value={inputValue}
-        onChange={handleChange}
-        placeholder="Search for a fruit"
-      />
-      <br />
-      <ul>
-        {suggestions.map((suggestion) => (
-          <li key={suggestion}>{suggestion}</li>
-        ))}
-      </ul>
     </div>
-
-     </div>
-    
   );
 };
 
